@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
     class
-        Cashe
+        Cache
 """
 
 import redis
@@ -10,14 +10,11 @@ from typing import Union
 
 
 class Cache:
-
     """A Cache class for redis"""
-
     def __init__(self) -> None:
         """Initiate a redis"""
-        r = redis.Redis()
-        r.flushdb()
-        self._redis = r
+        self._redis = redis.Redis()
+        self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Store the data in the redis"""
