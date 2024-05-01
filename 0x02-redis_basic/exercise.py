@@ -12,11 +12,12 @@ from typing import Union
 class Cache:
 
     """A Cache class for redis"""
-    redis.Redis().flushdb()
 
     def __init__(self) -> None:
         """Initiate a redis"""
-        self._redis = redis.Redis()
+        r = redis.Redis()
+        r.flushdb()
+        self._redis = r
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Store the data in the redis"""
